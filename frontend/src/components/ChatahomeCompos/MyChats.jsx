@@ -15,7 +15,9 @@ const MyChats = ({ fetchAgain }) => {
 
     useEffect(() => {
         setLoggedInUser(JSON.parse(localStorage.getItem("userInfo")));
+
         fetchChats();
+        console.log(chats)
     }, [fetchAgain])
     const fetchChats = async () => {
         try {
@@ -25,6 +27,8 @@ const MyChats = ({ fetchAgain }) => {
                 },
             };
             const { data } = await axios.get("http://localhost:5000/api/chat", config);
+            console.log(data)
+
             console.log(data)
             setChats(data);
         } catch (error) {
@@ -64,7 +68,7 @@ const MyChats = ({ fetchAgain }) => {
                 My Chats
                 <GroupChatspace>
                     <Button
-                        d="flex"
+                        display="flex"
                         fontSize={{ base: "17px", md: "10px", lg: "17px" }}
                         rightIcon={<AddIcon />}
                     >
@@ -73,7 +77,7 @@ const MyChats = ({ fetchAgain }) => {
                 </GroupChatspace>
             </Box>
             <Box
-                d="flex"
+                display="flex"
                 flexDir="column"
                 p={3}
                 bg="#F8F8F8"

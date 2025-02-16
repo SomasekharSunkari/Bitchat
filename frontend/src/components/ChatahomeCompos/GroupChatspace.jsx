@@ -21,7 +21,6 @@ const GroupChatspace = ({ children }) => {
         if (!query) {
             return;
         }
-
         try {
             setLoading(true);
             const config = {
@@ -29,10 +28,8 @@ const GroupChatspace = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            console.log(config)
 
             const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, config);
-
             console.log(data);
             setLoading(false);
             setSearchResult(data);
@@ -65,6 +62,10 @@ const GroupChatspace = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
+
+
+            selectedUsers.push(user._id);
+
             const { data } = await axios.post(
                 `http://localhost:5000/api/chat/group`,
                 {

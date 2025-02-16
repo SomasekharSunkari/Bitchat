@@ -63,6 +63,7 @@ const fetchChats = asyncHandler(
                         select: "name pic email",
                     });
 
+
                     res.status(200).send(results)
                 })
         }
@@ -106,6 +107,8 @@ const createGroupChat = asyncHandler(async (req, res) => {
             .status(400)
             .send("More than 2 users are required to form a group chat");
     }
+    users.push(req.user._id)
+
     try {
         const groupChat = await Chat.create({
             chatName: req.body.name,
