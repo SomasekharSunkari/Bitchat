@@ -9,10 +9,10 @@ const Signup = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [show, setShow] = useState(true);
-    const [confirmShw, setConfirmShow] = useState(true);
+    const [show, setShow] = useState(false);
+    const [confirmShw, setConfirmShow] = useState(false);
     const [loading, setloading] = useState(false);
-    const [picUp, setPic] = useState("");
+    const [pic, setPic] = useState("");
     const navigate = useNavigate();
     const toast = useToast();
     const handelClick = (e) => {
@@ -42,7 +42,8 @@ const Signup = () => {
                 }
             };
 
-            const { data } = await axios.post("http://localhost:5000/api/user", { name, email, password, picUp }, config);
+            const { data } = await axios.post("http://localhost:5000/api/user", { name, email, password, pic }, config);
+            console.log(data)
 
             toast({
                 title: "Registration Successful!",
@@ -92,6 +93,7 @@ const Signup = () => {
                     body: formData
                 }
             ).then((res) => res.json()).then((data) => {
+                console.log(data.url.toString())
                 setPic(data.url.toString());
                 console.log(data.url)
                 console.log(pic)

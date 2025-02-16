@@ -85,14 +85,11 @@ const Sidedrawer = () => {
                 }
             }
             const { data } = await axios.post("http://localhost:5000/api/chat", { userId }, config);
-            console.log(data)
-            console.log(chats)
+
             //If the Chat alredy present in the current chats ignore that one
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
             setSelectedChat(data)
             setLoadingChat(false);
-            console.log(chats)
-
             onClose();
         }
         catch (err) {
@@ -113,21 +110,21 @@ const Sidedrawer = () => {
                 bg="white" w="100%" p="5px 10px" borderWidth="1px"
             >
                 <Tooltip label="Search users to chat" hasArrow placement="bottom-end">
-                    <Button variant="ghost" onClick={onOpen}>
+                    <Button variant="ghost" display={"flex"} alignItems={"center"} gap={"20px"} onClick={onOpen}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                         <Text display={{ base: "none", md: "block" }} fontSize="12px">Search Users</Text>
                     </Button>
                 </Tooltip>
 
-                <Text fontSize="2xl" fontFamily="Work sans">Chit Chat</Text>
+                <Text fontSize="2xl" fontFamily="Work sans" fontWeight={"bold"}>Bitchat</Text>
 
                 <div>
                     <Menu>
                         <MenuButton p={1}>
-                            <Badge colorScheme="red" variant="solid" fontSize="12px" mr={1} className='rounded-full '>
+                            <Badge colorScheme="red" variant="solid" borderRadius={"3xl"} fontSize="12px" mr={1} className=' '>
                                 {notifications?.length || 0}  {/* Displaying notification count */}
                             </Badge>
-                            <FaBell className='mr-[20px] text-2xl mt-[-6px]' />
+                            <FaBell className='mr-[20px] text-2xl mt-[-10px]' />
                         </MenuButton>
                         <MenuList pl={2}>
                             {!notifications.length && "No New Messages"}

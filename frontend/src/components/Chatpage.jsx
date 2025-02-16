@@ -13,7 +13,7 @@ const Chatpage = () => {
             {
                 user && <Sidedrawer />
             }
-            <Box display="flex" justifyContent={"space-between"} h={"95vh"} w={"100%"} p={"30px"}>
+            <Box display="flex" overflowY={"hidden"} justifyContent={"space-between"} h={"95vh"} w={"100%"} p={"30px"}>
 
                 {user && <MyChats fetchAgain={fetchAgain} />}
                 {user && <ChatSpace fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}

@@ -23,7 +23,7 @@ const ProfileModel = ({ children, user }) => {
             ) : (
                 <IconButton d={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
             )}
-            <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
+            <Modal size={{ base: "sm", md: "lg" }} onClose={onClose} isOpen={isOpen} isCentered>
                 <ModalOverlay />
                 <ModalContent h="410px">
                     <ModalHeader

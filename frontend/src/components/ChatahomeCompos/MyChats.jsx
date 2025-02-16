@@ -58,9 +58,9 @@ const MyChats = ({ fetchAgain }) => {
             <Box
                 pb={3}
                 px={3}
-                fontSize={{ base: "28px", md: "30px" }}
+                fontSize={{ base: "20px", md: "30px" }}
                 fontFamily="Work sans"
-                d="flex"
+                display="flex"
                 w="100%"
                 justifyContent="space-between"
                 alignItems="center"
@@ -69,7 +69,7 @@ const MyChats = ({ fetchAgain }) => {
                 <GroupChatspace>
                     <Button
                         display="flex"
-                        fontSize={{ base: "17px", md: "10px", lg: "17px" }}
+                        fontSize={{ base: "15px", md: "10px", lg: "17px" }}
                         rightIcon={<AddIcon />}
                     >
                         New Group Chat

@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
     const [loading, setloading] = useState(false);
     const toast = useToast();
     const navigate = useNavigate();

@@ -11,12 +11,12 @@ const Homepage = () => {
     }, [navigate])
     return (
         <Container maxW="5xl" centerContent bgImage={""}>
-            <Box d="flex" bg="transparent" w={"100%"} fontSize={"3xl"} justifyContent="center" fontFamily={"Poppins"} color={"white"} fontWeight={"bold"} m={"40px 0px 15px 0px"} p="20px" borderRadius="1lg" borderWidth={"1px"}>
+            <Box display="flex" bg="transparent" w={"100%"} fontSize={"3xl"} justifyContent="center" fontFamily={"Poppins"} color={"white"} fontWeight={"bold"} m={"40px 0px 15px 0px"} p="20px" borderRadius="1lg" borderWidth={"1px"}>
                 <Text textAlign={"center"} >
-                    Chit Chat
+                    Chatmate
                 </Text>
             </Box>
-            <Box w={"100%"} bg={"white"} borderWidth={"1px"} p={"10px"} borderRadius={"2xl"}>
+            <Box w={"80%"} bg={"white"} borderWidth={"1px"} p={"10px"} borderRadius={"2xl"}>
                 <Tabs variant={"soft-rounded"} colorScheme="red" >
                     <TabList borderRadius={"full"}>
                         <Tab width={"50%"}>Signup</Tab>
