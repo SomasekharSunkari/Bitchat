@@ -32,27 +32,20 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
 
     const fetchMessages = async () => {
         if (!selectedChat) return;
-
         try {
             const config = {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-
             setLoading(true);
-
             const { data } = await axios.get(
                 `http://localhost:5000/api/messages/${selectedChat._id}`,
                 config
             );
-
-            console.log(data)
             setMessages(data);
             setLoading(false);
-
             socket.emit("join chat", selectedChat._id)
-            // socket.emit("join chat", selectedChat._id);
         } catch (error) {
             toast({
                 title: "Error Occured!",
@@ -66,7 +59,6 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
     };
     const sendMessage = async (event) => {
         if (event.key === "Enter" && newMessage) {
-            //   socket.emit("stop typing", selectedChat._id);
             try {
                 const config = {
                     headers: {
@@ -121,6 +113,7 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
     }
     useEffect(() => {
         fetchMessages();
+        setNewMessage("")
         selectedChatCompare = selectedChat;//This is to determine selected chat 
     }, [selectedChat]);
 
@@ -134,6 +127,7 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
     }, [])
     useEffect(() => {
         socket.on("Message recieved", (newMessage) => {
+
             if (!selectedChatCompare || selectedChatCompare._id !== newMessage.chat._id) {
                 if (!notifications.includes(newMessage)) {
                     setNotifications([...notifications, newMessage]);

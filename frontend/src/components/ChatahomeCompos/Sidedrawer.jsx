@@ -7,7 +7,6 @@ import { Badge } from '@chakra-ui/react'; // Badge from Chakra UI to display the
 
 import React, { useState } from 'react';
 import { BellIcon, ChevronDownIcon } from "@chakra-ui/icons";
-import NotificationBadge, { Effect } from "react-notification-badge";
 
 import { ChatState } from '../Context/ContextProvider';
 import ProfileModel from '../ProfileModel';
@@ -75,7 +74,6 @@ const Sidedrawer = () => {
 
     // Function to access chat
     const accessChat = async (userId) => {
-        console.log(`Accessing chat with user: ${userId}`);
         try {
             setLoadingChat(true);
             const config = {
@@ -118,13 +116,26 @@ const Sidedrawer = () => {
 
                 <Text fontSize="2xl" fontFamily="Work sans" fontWeight={"bold"}>Bitchat</Text>
 
-                <div>
+                <div className='flex'>
                     <Menu>
-                        <MenuButton p={1}>
-                            <Badge colorScheme="red" variant="solid" borderRadius={"3xl"} fontSize="12px" mr={1} className=' '>
-                                {notifications?.length || 0}  {/* Displaying notification count */}
-                            </Badge>
-                            <FaBell className='mr-[20px] text-2xl mt-[-10px]' />
+                        <MenuButton p={1} position="relative">
+                            <Box position="relative" display="inline-block">
+                                {notifications.length > 0 && (
+                                    <Badge
+                                        colorScheme="red"
+                                        variant="solid"
+                                        borderRadius="full"
+                                        fontSize="0.7em"
+                                        position="absolute"
+
+                                        right="6px"
+
+                                    >
+                                        {notifications.length} {/* Displaying notification count */}
+                                    </Badge>
+                                )}
+                                <FaBell className="text-2xl mt-3 mr-3" />
+                            </Box>
                         </MenuButton>
                         <MenuList pl={2}>
                             {!notifications.length && "No New Messages"}
@@ -134,6 +145,7 @@ const Sidedrawer = () => {
                                     onClick={() => {
                                         setSelectedChat(notif.chat);
                                         setNotifications(notifications.filter((n) => n !== notif));
+
                                     }}
                                 >
                                     {notif.chat.isGroupChat
@@ -143,6 +155,7 @@ const Sidedrawer = () => {
                             ))}
                         </MenuList>
                     </Menu>
+
 
                     <Menu>
                         <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>

@@ -47,6 +47,7 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log("Connected to  socket.io")
     socket.on("setup", (userData) => {
+        console.log(socket.id)
 
         socket.join(userData._id);
         socket.emit("connected");
@@ -56,7 +57,6 @@ io.on("connection", (socket) => {
         console.log("User Joined room + " + room)
     })
     socket.on("typing", (room) => {
-
         socket.in(room).emit("typing")
     });
     socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));

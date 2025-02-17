@@ -122,7 +122,7 @@ const Signup = () => {
 
     }
     return (
-        <VStack spacing={"1.5"}>
+        <VStack spacing={"2.5"}>
             <FormControl id='name' isRequired>
                 <FormLabel >
                     Name

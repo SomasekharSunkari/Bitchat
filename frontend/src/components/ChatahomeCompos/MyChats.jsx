@@ -15,9 +15,7 @@ const MyChats = ({ fetchAgain }) => {
 
     useEffect(() => {
         setLoggedInUser(JSON.parse(localStorage.getItem("userInfo")));
-
         fetchChats();
-        console.log(chats)
     }, [fetchAgain])
     const fetchChats = async () => {
         try {

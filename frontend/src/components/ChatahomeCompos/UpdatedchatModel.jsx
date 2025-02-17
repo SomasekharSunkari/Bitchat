@@ -173,6 +173,7 @@ const UpdatedchatModel = ({ fetchAgain, setFetchAgain, children }) => {
     const handleSearch = async (query) => {
         setSearch(query);
         if (!query) {
+            setsearchResult([]);
             return;
         }
 
@@ -184,7 +185,6 @@ const UpdatedchatModel = ({ fetchAgain, setFetchAgain, children }) => {
                 },
             };
             const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, config);
-            console.log(data);
             setLoading(false);
             setsearchResult(data);
         } catch (error) {
@@ -200,15 +200,15 @@ const UpdatedchatModel = ({ fetchAgain, setFetchAgain, children }) => {
         }
     };
     return (
-        <div>
+        <div >
             {children ? (
                 <span onClick={onOpen}>{children}</span>
             ) : (
                 <IconButton display={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
             )}
-            <Modal size="lg" onClose={onClose} isOpen={isOpen} >
+            <Modal size="lg" onClose={onClose} isOpen={isOpen}   >
                 <ModalOverlay />
-                <ModalContent h="400px">
+                <ModalContent h="500px">
                     <ModalHeader
                         fontSize="40px"
                         fontFamily="Work sans"
@@ -223,8 +223,10 @@ const UpdatedchatModel = ({ fetchAgain, setFetchAgain, children }) => {
                         display="flex"
                         flexDir="column"
                         alignItems="center"
+
+                        height={"300px"}
                     >
-                        <Box display={"flex"} w="100%" flexWrap="wrap" pb={3}>
+                        <Box display={"flex"} w="100%" flexWrap="wrap" pb={3} >
 
                             {selectedChat.users.map((user) => (
                                 <Userpill
@@ -259,17 +261,21 @@ const UpdatedchatModel = ({ fetchAgain, setFetchAgain, children }) => {
                                 onChange={(e) => handleSearch(e.target.value)}
                             />
                         </FormControl>
-                        {loading ? (
-                            <Spinner size="lg" />
-                        ) : (
-                            searchResult?.map((user) => (
-                                <UserListItem
-                                    key={user._id}
-                                    user={user}
-                                    handleFunction={() => handleAddUser(user)}
-                                />
-                            ))
-                        )}
+                        <Box w={"100%"} mt={"1rem"}  >
+                            {loading ? (
+                                <Spinner size="lg" />
+                            ) : (
+                                searchResult.slice(0, 3)?.map((user) => (
+                                    <UserListItem
+                                        key={user._id}
+                                        user={user}
+                                        handleFunction={() => handleAddUser(user)}
+                                    />
+                                )
+                                )
+                            )}
+
+                        </Box>
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={() => handelRemove(user)} colorScheme="red">
