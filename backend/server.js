@@ -7,19 +7,33 @@ import router from "./routes/userRoutes.js";
 import { Server } from "socket.io"
 import chatRouter from "./routes/chatRoutes.js";
 import connection from "./config/db_config.js";
+import path from "path"
 import messageRouter from "./routes/messageRoutes.js";
 const app = express();
 dotenv.config()
 connection()
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173"
-    ,
-    methods: ["GET", "POST", "DELETE", "PUT"]
+    // origin: "http://localhost:5173"
+    // ,
+    // methods: ["GET", "POST", "DELETE", "PUT"]
 }))
 app.use("/api/user", router)
 app.use("/api/chat", chatRouter);
 app.use("/api/messages", messageRouter)
+// const __dirname1 = path.resolve();
+
+// if (process.env.NODE_ENV === "production") {
+//     app.use(express.static(path.join(__dirname1, "../frontend/dist")));
+
+//     app.get("*", (req, res) =>
+//         res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"))
+//     );
+// } else {
+//     app.get("/", (req, res) => {
+//         res.send("API is running..");
+//     });
+// }
 app.get("/", (req, res) => {
     res.send("API IS RUNNING")
 })

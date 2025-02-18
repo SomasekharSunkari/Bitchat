@@ -55,7 +55,7 @@ const Sidedrawer = () => {
             const config = {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
-            const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, config);
+            const { data } = await axios.get(`/api/user?search=${search}`, config);
             setSearchResult(data);
         } catch (error) {
             console.error("Search Error:", error);
@@ -82,7 +82,7 @@ const Sidedrawer = () => {
                     Authorization: `Bearer ${user.token}`
                 }
             }
-            const { data } = await axios.post("http://localhost:5000/api/chat", { userId }, config);
+            const { data } = await axios.post("/api/chat", { userId }, config);
 
             //If the Chat alredy present in the current chats ignore that one
             if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
@@ -114,7 +114,7 @@ const Sidedrawer = () => {
                     </Button>
                 </Tooltip>
 
-                <Text fontSize="2xl" fontFamily="Work sans" fontWeight={"bold"}>Bitchat</Text>
+                <Text fontSize="3xl" fontFamily="Work sans" fontWeight={"bold"}>Bitchat</Text>
 
                 <div className='flex'>
                     <Menu>

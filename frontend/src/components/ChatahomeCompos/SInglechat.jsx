@@ -40,10 +40,11 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
             };
             setLoading(true);
             const { data } = await axios.get(
-                `http://localhost:5000/api/messages/${selectedChat._id}`,
+                `/api/messages/${selectedChat._id}`,
                 config
             );
             setMessages(data);
+            setFetchAgain(!fetchAgain)
             setLoading(false);
             socket.emit("join chat", selectedChat._id)
         } catch (error) {
@@ -68,7 +69,7 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
                 };
                 setNewMessage("");
                 const { data } = await axios.post(
-                    "http://localhost:5000/api/messages",
+                    "/api/messages",
                     {
                         content: newMessage,
                         chatId: selectedChat,
@@ -137,7 +138,6 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
                 setMessages([...messages, newMessage])
             }
         })
-        console.log(notifications)
 
     })
     return (
@@ -150,6 +150,8 @@ const SingleChat = ({ setFetchAgain, fetchAgain }) => {
                         px={2}
                         w="100%"
                         fontFamily="Work sans"
+                        backdropBlur={"2xl"}
+                        backgroundImage={"transperant"}
                         display="flex"
                         justifyContent={{ base: "space-between" }}
                         alignItems="center"

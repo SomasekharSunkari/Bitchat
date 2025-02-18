@@ -24,7 +24,7 @@ const MyChats = ({ fetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.get("http://localhost:5000/api/chat", config);
+            const { data } = await axios.get("/api/chat", config);
             console.log(data)
 
             console.log(data)

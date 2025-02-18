@@ -24,7 +24,7 @@ const Login = () => {
                 }
             };
 
-            const { data } = await axios.post("http://localhost:5000/api/user/login", { email, password }, config);
+            const { data } = await axios.post("/api/user/login", { email, password }, config);
 
             toast({
                 title: "Login Successful!",
@@ -71,8 +71,8 @@ const Login = () => {
             </FormControl>
             <Button colorScheme='blue' w={"100%"} m={"1rem 0 5px 0"} color={"white"} isLoading={loading} onClick={submitHandler}>Login</Button>
             <Button bg={"red.300"} color={"white"} onClick={() => {
-                setEmail("guestemail@gmail.com")
-                setPassword("12345")
+                setEmail("guestuser@gmail.com")
+                setPassword("guestuser")
             }} w={"100%"} >Login with Guest Credentials </Button>
         </VStack>
     )

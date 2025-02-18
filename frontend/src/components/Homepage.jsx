@@ -13,13 +13,13 @@ const Homepage = () => {
         <Container maxW="5xl" height={"1400px"} centerContent bgImage={""}>
             <Box display="flex" bg="transparent" w={"100%"} fontSize={"3xl"} justifyContent="center" fontFamily={"Poppins"} color={"white"} fontWeight={"bold"} m={"40px 0px 15px 0px"} p="20px" borderRadius="1lg" borderWidth={"1px"}>
                 <Text textAlign={"center"} >
-                    Chatmate
+                    BitChat
                 </Text>
             </Box>
             <Box w={"60%"} bg={"white"} borderWidth={"1px"} p={"10px"} borderRadius={"2xl"} >
                 <Tabs variant={"soft-rounded"} colorScheme="red" >
                     <TabList borderRadius={"full"}>
-                        <Tab width={"50%"}>Signup</Tab>
+                        <Tab width={"50%"} padding={"10px"}>Signup</Tab>
                         <Tab width={"50%"}>Login</Tab>
                     </TabList>
                     <TabPanels>
