@@ -9,8 +9,8 @@
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
-    "build": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
-    "start": "cd backend && node app.js"
+    "build": "npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend && npm install --legacy-peer-deps --prefix backend",
+    "start": "cd backend && node server.js"
   },
   "keywords": [
     "MERN",
