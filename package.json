@@ -9,7 +9,7 @@
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
-    "build": "npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend && npm install --legacy-peer-deps --prefix backend",
+    "build": "m -rf node_modules package-lock.json && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend && rm -rf node_modules package-lock.json npm install --legacy-peer-deps --prefix backend",
     "start": "cd backend && node server.js"
   },
   "keywords": [
