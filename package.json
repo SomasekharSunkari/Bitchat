@@ -7,9 +7,9 @@
     "dev-server": "npm run start --prefix backend",
     "dev-client": "npm run dev --prefix frontend",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
-    "install-all": "npm install && npm install --prefix frontend && npm install --prefix backend",
-    "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend && npm install --prefix backend",
-    "build": "rm -rf node_modules package-lock.json && npm install --legacy-peer-deps --prefix frontend && npm run build --prefix frontend && rm -rf node_modules package-lock.json npm install --legacy-peer-deps --prefix backend",
+    "install-all": "npm install && npm install --prefix frontendr && npm install --prefix backend",
+    "heroku-postbuild": "npm install --prefix frontendr && npm run build --prefix frontendr && npm install --prefix backend",
+    "build": "rm -rf node_modules package-lock.json && npm install --legacy-peer-deps --prefix frontendr && npm run build --prefix frontendr && rm -rf node_modules package-lock.json npm install --legacy-peer-deps --prefix backend",
     "start": "cd backend && node server.js"
   },
   "keywords": [
